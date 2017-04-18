@@ -1,0 +1,13 @@
+{
+    "name": "greenpeace/planet4-content-default",
+    "description": "Scripts that control the default content of the default planet4 installation",
+    "type": "library",
+    "authors": [
+        {
+            "name": "koyan",
+            "email": "koyandianthos@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
