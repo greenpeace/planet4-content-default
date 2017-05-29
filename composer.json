@@ -2,7 +2,7 @@
     "name": "greenpeace/planet4-content-default",
     "description": "Scripts that control the default content of the default planet4 installation",
     "type": "library",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "authors": [
         {
             "name": "koyan",
@@ -22,8 +22,7 @@
 			 	"@core:initial-content-6",
 			 	"@core:initial-content-7",
 			 	"@core:initial-content-8",
-			 	"@core:initial-content-9",
-				"@core:initial-content-10"
+			 	"@core:initial-content-9"
 			],
 
 			"core:initial-content-1": "wp post update 2 --post_title='Tech' page-tech.html",
@@ -34,8 +33,7 @@
 			"core:initial-content-6": "wp option update page_on_front 5",
 			"core:initial-content-7": "wp post update 4 --post_status=publish",
 			"core:initial-content-8": "wp post update 5 --post_status=publish",
-			"core:initial-content-9": "wp post update 6 --post_status=publish",
-			"core:initial-content-10": "wp media import vendor/greenpeace/planet4-content-default/assets/software-architecture.png --post_id=2 --title='Software architecture'"
+			"core:initial-content-9": "wp post update 6 --post_status=publish"
 
 		}
 }
