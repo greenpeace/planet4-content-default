@@ -2,7 +2,7 @@
     "name": "greenpeace/planet4-content-default",
     "description": "Scripts that control the default content of the default planet4 installation",
     "type": "library",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "authors": [
         {
             "name": "koyan",
