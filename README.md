@@ -4,3 +4,5 @@ Scripts that control the default content of the default planet4 installation. Th
 So, hi devs!
 
 This content will use the WP content types and formats, follow the Planet 4 style guides and otherwise be reflective of the Planet 4 project as a whole.
+
+20170612
