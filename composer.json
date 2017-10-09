@@ -22,7 +22,13 @@
 			 	"@core:initial-content-6",
 			 	"@core:initial-content-7",
 			 	"@core:initial-content-8",
-			 	"@core:initial-content-9"
+			 	"@core:initial-content-9",
+				"@core:initial-content-10",
+				"@core:initial-content-11",
+				"@core:initial-content-12",
+				"@core:initial-content-13",
+				"@core:initial-content-14",
+				"@core:initial-content-15"
 			],
 
 			"core:initial-content-1": "wp post update 2 --post_title='Tech' page-tech.html",
@@ -33,7 +39,12 @@
 			"core:initial-content-6": "wp option update page_on_front 5",
 			"core:initial-content-7": "wp post update 4 --post_status=publish",
 			"core:initial-content-8": "wp post update 5 --post_status=publish",
-			"core:initial-content-9": "wp post update 6 --post_status=publish"
-
+			"core:initial-content-9": "wp post update 6 --post_status=publish",
+			"core:initial-content-10": "wp post create --post_type=page --post_title=ACT --post_name=act --post_status=publish page-act.html",
+			"core:initial-content-11": "wp post create --post_type=page --post_title=EXPLORE --post_name=explore --post_status=publish page-explore.html",
+			"core:initial-content-12": "wp menu create “Navbar-Menu”",
+			"core:initial-content-13": "wp menu location assign navbar-menu navbar",
+			"core:initial-content-14": "idd=$(wp post list --post_type=page --post_name=act --field=ID | head -1); wp menu item add-post navbar-menu $idd --classes=hidden-md-down  --classes=hidden-lg-down",
+			"core:initial-content-15": "idd=$(wp post list --post_type=page --post_name=explore --field=ID | head -1); wp menu item add-post navbar-menu $idd --classes=hidden-md-down  --classes=hidden-lg-down"
 		}
 }
