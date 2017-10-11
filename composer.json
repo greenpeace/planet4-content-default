@@ -50,15 +50,15 @@
 			"core:initial-content-10": "wp menu item add-custom \"Footer Social\" Youtube http://youtube.com --position=3 --classes=\"fa fa-youtube-play\"",
 			"core:initial-content-11": "wp menu item add-custom \"Footer Social\" Instagram http://instagram.com --position=4 --classes=\"fa fa-instagram\"",
 			"core:initial-content-12": "wp menu create \"Footer Primary\"",
-			"core:initial-content-13": "wp menu item add-custom \"Footer Primary\" NEWS # --position=1",
-			"core:initial-content-14": "wp menu item add-custom \"Footer Primary\" ABOUT # --position=2",
-			"core:initial-content-15": "wp menu item add-custom \"Footer Primary\" FAQ # --position=3",
-			"core:initial-content-16": "wp menu item add-custom \"Footer Primary\" PRESS # --position=4",
-			"core:initial-content-17": "wp menu item add-custom \"Footer Primary\" TERMS # --position=5",
+			"core:initial-content-13": "wp menu item add-custom \"Footer Primary\" NEWS / --position=1",
+			"core:initial-content-14": "wp menu item add-custom \"Footer Primary\" ABOUT / --position=2",
+			"core:initial-content-15": "wp menu item add-custom \"Footer Primary\" FAQ / --position=3",
+			"core:initial-content-16": "wp menu item add-custom \"Footer Primary\" PRESS / --position=4",
+			"core:initial-content-17": "wp menu item add-custom \"Footer Primary\" TERMS / --position=5",
 			"core:initial-content-18": "wp menu create \"Footer Secondary\"",
-			"core:initial-content-19": "wp menu item add-custom \"Footer Secondary\" PRIVACY # --position=1",
-			"core:initial-content-20": "wp menu item add-custom \"Footer Secondary\" \"CODE OF CONDUCT\" # --position=2",
-			"core:initial-content-21": "wp menu item add-custom \"Footer Secondary\" JOBS # --position=3",
+			"core:initial-content-19": "wp menu item add-custom \"Footer Secondary\" PRIVACY / --position=1",
+			"core:initial-content-20": "wp menu item add-custom \"Footer Secondary\" \"CODE OF CONDUCT\" / --position=2",
+			"core:initial-content-21": "wp menu item add-custom \"Footer Secondary\" JOBS / --position=3",
 			"core:initial-content-22": "wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a CC-BY-SA International License\""
 		}
 }
