@@ -59,6 +59,6 @@
 			"core:initial-content-19": "wp menu item add-custom \"Footer Secondary\" PRIVACY / --position=1",
 			"core:initial-content-20": "wp menu item add-custom \"Footer Secondary\" \"CODE OF CONDUCT\" / --position=2",
 			"core:initial-content-21": "wp menu item add-custom \"Footer Secondary\" JOBS / --position=3",
-			"core:initial-content-22": "wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a CC-BY-SA International License\""
+			"core:initial-content-22": "wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a <a href=\"#\">CC-BY-SA International License</a>\""
 		}
 }
