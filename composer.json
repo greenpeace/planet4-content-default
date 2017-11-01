@@ -65,16 +65,17 @@
 			"core:initial-content-17": "wp menu create \"Footer Primary\"",
 			"core:initial-content-18": "idd=$(wp post list --post_type=page --title=news --field=ID | head -1);wp menu item add-post \"Footer Primary\" $idd --title=\"NEWS\" --position=1",
 			"core:initial-content-19": "idd=$(wp post list --post_type=page --title=about --field=ID | head -1);wp menu item add-post \"Footer Primary\" $idd --title=\"ABOUT\" --position=2",
-			"core:initial-content-20": "idd=$(wp post list --post_type=page --title=faq --field=ID | head -1);wp menu item add-post \"Footer Primary\" $idd --title=\"FAQ\" --position=3",
-			"core:initial-content-21": "idd=$(wp post list --post_type=page --title=press --field=ID | head -1);wp menu item add-post \"Footer Primary\" $idd --title=\"PRESS\" --position=4",
-			"core:initial-content-22": "idd=$(wp post list --post_type=page --title=terms --field=ID | head -1);wp menu item add-post \"Footer Primary\" $idd --title=\"TERMS\" --position=5",
+			"core:initial-content-20": "idd=$(wp post list --post_type=page --title=faq --field=ID | head -1);wp menu item add-post \"Footer Primary\" $idd --title=\"JOBS\" --position=3",
+			"core:initial-content-21": "idd=$(wp post list --post_type=page --title=press --field=ID | head -1);wp menu item add-post \"Footer Primary\" $idd --title=\"FAQ\" --position=4",
+			"core:initial-content-22": "idd=$(wp post list --post_type=page --title=terms --field=ID | head -1);wp menu item add-post \"Footer Primary\" $idd --title=\"PRESS\" --position=5",
 			"core:initial-content-23": "wp post create --post_type=page --post_title=PRIVACY --post_name=privacy --post_status=publish page-privacy.html",
 			"core:initial-content-24": "wp post create --post_type=page --post_title=\"CODE OF CONDUCT\" --post_name=codeofconduct --post_status=publish page-code-of-conduct.html",
 			"core:initial-content-25": "wp post create --post_type=page --post_title=JOBS --post_name=jobs --post_status=publish page-jobs.html",
 			"core:initial-content-26": "wp menu create \"Footer Secondary\"",
 			"core:initial-content-27": "idd=$(wp post list --post_type=page --title=privacy --field=ID | head -1);wp menu item add-post \"Footer Secondary\" $idd --title=\"PRIVACY\" --position=1",
 			"core:initial-content-28": "idd=$(wp post list --post_type=page --name=codeofconduct --field=ID | head -1);wp menu item add-post \"Footer Secondary\" $idd --title=\"CODE OF CONDUCT\" --position=2",
-			"core:initial-content-29": "idd=$(wp post list --post_type=page --title=jobs --field=ID | head -1);wp menu item add-post \"Footer Secondary\" $idd --title=\"JOBS\" --position=3",
-			"core:initial-content-30": "wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a <a href=\"#\">CC-BY-SA International License</a>\""
+			"core:initial-content-30": "wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a <a href=\"https://creativecommons.org/share-your-work/public-domain/cc0\">CC0 International License</a>\""
 		}
 }
+
+
