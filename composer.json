@@ -43,7 +43,8 @@
 			 	"@core:initial-content-27",
 			 	"@core:initial-content-28",
 			 	"@core:initial-content-29",
-			 	"@core:initial-content-30"
+			 	"@core:initial-content-30",
+			 	"@core:initial-content-31"
 			],
 
 			"core:initial-content-1": "wp post create --post_type=page --post_title=ACT --post_name=act --post_status=publish page-act.html",
@@ -74,7 +75,8 @@
 			"core:initial-content-26": "wp menu create \"Footer Secondary\"",
 			"core:initial-content-27": "idd=$(wp post list --post_type=page --title=privacy --field=ID | head -1);wp menu item add-post \"Footer Secondary\" $idd --title=\"PRIVACY\" --position=1",
 			"core:initial-content-28": "idd=$(wp post list --post_type=page --name=codeofconduct --field=ID | head -1);wp menu item add-post \"Footer Secondary\" $idd --title=\"CODE OF CONDUCT\" --position=2",
-			"core:initial-content-30": "wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a <a href=\"https://creativecommons.org/share-your-work/public-domain/cc0\">CC0 International License</a>\""
+			"core:initial-content-30": "wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a <a href=\"https://creativecommons.org/share-your-work/public-domain/cc0\">CC0 International License</a>\"",
+			"core:initial-content-31": "wp option update date_format 'j F Y'"
 		}
 }
 
