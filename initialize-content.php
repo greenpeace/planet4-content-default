@@ -9,59 +9,69 @@
  * 1. Declare default content variables.
  */
 
-// Pages.
-// To add a new page to default content create an entry like this:
-$pages =[
-	'act' => [
+
+/**
+ * Pages.
+ * To add a new page to default content create an entry like this:
+ * 	'act'           => [
+ *		'content' => 'page-act.html',
+ *		'name'    => 'act',
+ *		'status'  => 'publish',
+ *		'title'   => 'ACT',
+ *		'type'    => 'page',
+ *	 ],
+ */
+$pages = [
+	'act'           => [
 		'content' => 'page-act.html',
 		'name'    => 'act',
 		'status'  => 'publish',
 		'title'   => 'ACT',
 		'type'    => 'page',
 	],
-	'explore' => [
+	'explore'       => [
 		'content' => 'page-explore.html',
 		'name'    => 'explore',
 		'status'  => 'publish',
 		'title'   => 'EXPLORE',
 		'type'    => 'page',
 	],
-	'news' => [
+	'news'          => [
 		'content' => 'page-news.html',
 		'name'    => 'news',
 		'status'  => 'publish',
 		'title'   => 'NEWS',
 		'type'    => 'page',
 	],
-	'about' => [
+	'about'         => [
 		'content' => 'page-about.html',
 		'name'    => 'about',
 		'status'  => 'publish',
 		'title'   => 'ABOUT',
 		'type'    => 'page',
 	],
-	'faq' => [
+	'faq'           => [
 		'content' => 'page-faq.html',
 		'name'    => 'faq',
 		'status'  => 'publish',
 		'title'   => 'faq',
 		'type'    => 'page',
 	],
-	'press' => [
+	'press'         => [
 		'content' => 'page-press.html',
 		'name'    => 'press',
 		'status'  => 'publish',
 		'title'   => 'press',
 		'type'    => 'page',
 	],
-	'terms' => [
+	'terms'         => [
 		'content' => 'page-terms.html',
 		'name'    => 'terms',
 		'status'  => 'publish',
 		'title'   => 'terms',
 		'type'    => 'page',
 	],
-	'privacy' => [
+	'privacy'       => [
 		'content' => 'page-privacy.html',
 		'name'    => 'privacy',
 		'status'  => 'publish',
@@ -69,12 +79,13 @@ $pages =[
 		'type'    => 'page',
 	],
 	'codeofconduct' => [
-		'title'=> 'CODE OF CONDUCT',
-		'name' => 'codeofconduct',
-		'type' => 'page',
-		'content' => 'page-code-of-conduct.html'
+		'content' => 'page-code-of-conduct.html',
+		'name'    => 'codeofconduct',
+		'status'  => 'publish',
+		'title'   => 'CODE OF CONDUCT',
+		'type'    => 'page',
 	],
-	'jobs' => [
+	'jobs'          => [
 		'content' => 'page-jobs.html',
 		'name'    => 'jobs',
 		'status'  => 'publish',
@@ -83,7 +94,9 @@ $pages =[
 	],
 ];
 
-// Menus.
+/**
+ * Menus.
+ */
 $menus = [
 	'Navigation Bar Menu' => [
 		'pages' => [
@@ -119,12 +132,13 @@ $menus = [
 		'pages' => [
 			'news',
 			'about',
+			'jobs',
 			'faq',
 			'press',
 			'terms'
 		]
 	],
-	'Footer Secondary'  => [
+	'Footer Secondary'    => [
 		'pages' => [
 			'privacy',
 			'codeofconduct',
@@ -139,33 +153,30 @@ $menus = [
 
 // Create pages.
 echo "Create planet4 default pages\n";
-create_pages($pages);
+create_pages( $pages );
 
 // Create menus.
 echo "Create planet4 default menus\n";
-create_menus($menus);
+create_menus( $menus );
 
 // Assign items to menus.
 echo "Assign items to planet4 default menus\n";
-assign_items_to_menus($menus);
+assign_items_to_menus( $menus );
 
 
 // Rest custom commands.
-execute_wp_command("wp menu location assign navigation-bar-menu navigation-bar-menu");
-execute_wp_command("wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a <a href=\"https://creativecommons.org/share-your-work/public-domain/cc0\">CC0 International License</a>\"");
-execute_wp_command("wp option update date_format 'j F Y'");
-
-
-
-
-
-
+echo "Execute rest custom commands\n";
+execute_wp_command( "wp menu location assign navigation-bar-menu navigation-bar-menu" );
+execute_wp_command( "wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a <a href=\"https://creativecommons.org/share-your-work/public-domain/cc0\">CC0 International License</a>\"" );
+execute_wp_command( "wp option update date_format 'j F Y'" );
 
 
 // Helper functions.
 
 /**
  * Assing items to menus
+ *
+ * @param array menus array.
  */
 function assign_items_to_menus( $menus ) {
 
@@ -181,14 +192,14 @@ function assign_items_to_menus( $menus ) {
 				if ( $page_id <= 0 ) {
 					continue;
 				}
-				if (!is_item_assigned_to_menu($page_name, $menu_id)) {
+				if ( ! is_item_assigned_to_menu( $page_name, $menu_id ) ) {
 					echo add_page_to_menu( $menu_id, $page_id );
 				}
 			}
 		}
 		if ( isset( $menu['custom'] ) ) {
 			foreach ( $menu['custom'] as $custom ) {
-				if (!is_item_assigned_to_menu($custom['name'], $menu_id)) {
+				if ( ! is_item_assigned_to_menu( $custom['name'], $menu_id ) ) {
 					echo add_custom_to_menu( $menu_id, $custom['name'], $custom['url'], $custom['classes'] );
 				}
 			}
@@ -198,21 +209,23 @@ function assign_items_to_menus( $menus ) {
 
 /**
  * Create pages.
+ *
  * @param $pages
  */
-function create_pages($pages) {
+function create_pages( $pages ) {
 	foreach ( $pages as $page_name => $page ) {
 		if ( get_page_id( $page_name ) === 0 ) {
-			echo create_page( $page_name );
+			echo create_page( $page );
 		}
 	}
 }
 
 /**
  * Create menus.
+ *
  * @param $menus
  */
-function create_menus($menus) {
+function create_menus( $menus ) {
 	foreach ( $menus as $menu_name => $menu ) {
 		if ( get_menu_id( $menu_name ) === 0 ) {
 			echo create_menu( $menu_name );
@@ -222,57 +235,67 @@ function create_menus($menus) {
 
 /**
  * Get menu id.
+ *
  * @param $title
+ *
  * @return integer menu_id
  */
-function get_menu_id($title) {
-	$menus = json_decode(shell_exec("wp menu list --format=json"));
-	if ($menus) {
-		foreach ($menus as $menu) {
-			if (isset($menu->name) && $title == $menu->name) {
-				return intval($menu->term_id);
+function get_menu_id( $title ) {
+	$menus = json_decode( shell_exec( "wp menu list --format=json" ) );
+	if ( $menus ) {
+		foreach ( $menus as $menu ) {
+			if ( isset( $menu->name ) && $title == $menu->name ) {
+				return intval( $menu->term_id );
 			}
 		}
+
 		return 0;
 	}
-	return -1;
+
+	return - 1;
 }
 
-function get_menu_items($menu_id) {
-	$output = shell_exec("wp menu item list $menu_id --fields=type,title,object_id --format=json");
-//	var_dump($output);
-	if (json_decode($output)) {
-//		var_dump(array_column(json_decode($output), 'title'));
-		return array_column(json_decode($output), 'title');
+function get_menu_items( $menu_id ) {
+	$output = shell_exec( "wp menu item list $menu_id --fields=type,title,object_id --format=json" );
+	if ( json_decode( $output ) ) {
+		return array_column( json_decode( $output ), 'title' );
 	}
+
 	return [];
 }
 
-function get_page_id($title) {
-	return intval(shell_exec("wp post list --post_type=page --title=$title --field=ID"));
+function get_page_id( $title ) {
+	return intval( shell_exec( "wp post list --post_type=page --title=$title --field=ID" ) );
 }
 
-function is_item_assigned_to_menu($item_title, $menu_id) {
-	$menu_items = get_menu_items($menu_id);
-	return in_array(strtolower($item_title), array_map('strtolower', $menu_items));
+function is_item_assigned_to_menu( $item_title, $menu_id ) {
+	$menu_items = get_menu_items( $menu_id );
+
+	return in_array( strtolower( $item_title ), array_map( 'strtolower', $menu_items ) );
 }
 
-function create_page($title) {
-	return shell_exec("wp post create --post_type=page --post_title=".strtoupper($title)." --post_name=$title --post_status=publish page-$title.html");
+function create_page( $page ) {
+	$title   = $page['title'];
+	$name    = $page['name'];
+	$content = $page['content'];
+	$type    = $page['type'];
+	$status  = $page['status'];
+
+	return shell_exec( "wp post create --post_type=$type --post_title=\"$title\" --post_name=\"$name\" --post_status=$status \"$content\"" );
 }
 
-function create_menu($title) {
-	return shell_exec("wp menu create \"$title\"");
+function create_menu( $title ) {
+	return shell_exec( "wp menu create \"$title\"" );
 }
 
-function add_page_to_menu($menu_id, $page_id) {
-	return shell_exec("wp menu item add-post $menu_id $page_id");
+function add_page_to_menu( $menu_id, $page_id ) {
+	return shell_exec( "wp menu item add-post $menu_id $page_id" );
 }
 
-function add_custom_to_menu($menu_id, $name, $url, $classes) {
-	return shell_exec("wp menu item add-custom $menu_id \"$name\" $url --classes=\"$classes\"");
+function add_custom_to_menu( $menu_id, $name, $url, $classes ) {
+	return shell_exec( "wp menu item add-custom $menu_id \"$name\" $url --classes=\"$classes\"" );
 }
 
-function execute_wp_command($command) {
-	return shell_exec($command);
+function execute_wp_command( $command ) {
+	return shell_exec( $command );
 }
