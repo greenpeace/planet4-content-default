@@ -242,7 +242,7 @@ function create_menus( $menus ) {
  */
 function get_menu_id( $title ) {
 	$menus = json_decode( shell_exec( "wp menu list --format=json" ) );
-	if ( $menus ) {
+	if ( $menus !== false && is_array($menus) ) {
 		foreach ( $menus as $menu ) {
 			if ( isset( $menu->name ) && $title == $menu->name ) {
 				return intval( $menu->term_id );
