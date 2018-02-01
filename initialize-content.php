@@ -151,6 +151,12 @@ $menus = [
  * 2. Create default content
  */
 
+$no_of_pages = get_number_of_pages();
+if ($no_of_pages > 1) {
+	echo "Skipping creation of default content\n";
+	exit(0);
+}
+
 // Create pages.
 echo "Create planet4 default pages\n";
 create_pages( $pages );
@@ -183,6 +189,7 @@ function assign_items_to_menus( $menus ) {
 	foreach ( $menus as $menu_name => $menu ) {
 		$menu_id = get_menu_id( $menu_name );
 		if ( $menu_id <= 0 ) {
+			echo "Menu $menu_name does not exist\n";
 			continue;
 		}
 		if ( isset( $menu['pages'] ) ) {
@@ -190,17 +197,26 @@ function assign_items_to_menus( $menus ) {
 			foreach ( $menu['pages'] as $page_name ) {
 				$page_id = get_page_id( $page_name );
 				if ( $page_id <= 0 ) {
+					echo "Page $page_name does not exist\n";
 					continue;
 				}
 				if ( ! is_item_assigned_to_menu( $page_name, $menu_id ) ) {
+					echo "Assign $page_name to $menu_name\n";
 					echo add_page_to_menu( $menu_id, $page_id );
+				}
+				else {
+					echo "Skip assigning $page_name to $menu_name\n";
 				}
 			}
 		}
 		if ( isset( $menu['custom'] ) ) {
 			foreach ( $menu['custom'] as $custom ) {
 				if ( ! is_item_assigned_to_menu( $custom['name'], $menu_id ) ) {
+					echo "Assign " . $custom['name'] . " to $menu_name\n";
 					echo add_custom_to_menu( $menu_id, $custom['name'], $custom['url'], $custom['classes'] );
+				}
+				else {
+					echo "Skip assigning " . $custom['name'] . " to $menu_name\n";
 				}
 			}
 		}
@@ -215,8 +231,13 @@ function assign_items_to_menus( $menus ) {
 function create_pages( $pages ) {
 	foreach ( $pages as $page_name => $page ) {
 		if ( get_page_id( $page_name ) === 0 ) {
+			echo "Create page $page_name\n";
 			echo create_page( $page );
 		}
+		else {
+			echo "Skipping page $page_name\n";
+		}
+
 	}
 }
 
@@ -228,7 +249,11 @@ function create_pages( $pages ) {
 function create_menus( $menus ) {
 	foreach ( $menus as $menu_name => $menu ) {
 		if ( get_menu_id( $menu_name ) === 0 ) {
+			echo "Create menu $menu_name\n";
 			echo create_menu( $menu_name );
+		}
+		else {
+			echo "Skipping menu $menu_name\n";
 		}
 	}
 }
@@ -264,8 +289,12 @@ function get_menu_items( $menu_id ) {
 	return [];
 }
 
+function get_number_of_pages() {
+	return intval( shell_exec( "wp post list --post_type=page --field=ID | wc -l" ) );
+}
+
 function get_page_id( $title ) {
-	return intval( shell_exec( "wp post list --post_type=page --title=$title --field=ID" ) );
+	return intval( shell_exec( "wp post list --post_type=page --title=\"$title\" --field=ID" ) );
 }
 
 function is_item_assigned_to_menu( $item_title, $menu_id ) {
