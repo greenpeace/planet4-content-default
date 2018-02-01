@@ -294,7 +294,7 @@ function get_number_of_pages() {
 }
 
 function get_page_id( $title ) {
-	return intval( shell_exec( "wp post list --post_type=page --post_title=\"$title\" --field=ID" ) );
+	return intval( shell_exec( "wp post list --post_type=page --title=\"$title\" --field=ID" ) );
 }
 
 function is_item_assigned_to_menu( $item_title, $menu_id ) {
