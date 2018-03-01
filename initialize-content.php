@@ -146,6 +146,27 @@ $menus = [
 	],
 ];
 
+/**
+ * Planet4 page type taxonomy default terms.
+ */
+$p4_page_type_terms = [
+	'0' => [
+		'name'        => 'Story',
+		'slug'        => 'story',
+		'description' => 'A term for story post type',
+	],
+	'1' => [
+		'name'        => 'Press release',
+		'slug'        => 'press-release',
+		'description' => 'A term for press release post type',
+	],
+	'2' => [
+		'name'        => 'Publication',
+		'slug'        => 'publication',
+		'description' => 'A term for publication post type',
+	],
+];
+
 
 /**
  * 2. Create default content
@@ -175,6 +196,10 @@ echo "Execute rest custom commands\n";
 execute_wp_command( "wp menu location assign navigation-bar-menu navigation-bar-menu" );
 execute_wp_command( "wp option update copyright \"Unless otherwise stated, the content on this website is licensed under a <a href=\"https://creativecommons.org/share-your-work/public-domain/cc0\">CC0 International License</a>\"" );
 execute_wp_command( "wp option update date_format 'j F Y'" );
+
+// Create p4-page-type default terms
+echo "Create p4-page-type taxonomy terms\n";
+create_taxonomy_terms('p4-page-type', $p4_page_type_terms);
 
 
 // Helper functions.
@@ -259,6 +284,24 @@ function create_menus( $menus ) {
 }
 
 /**
+ * Create taxonomy terms.
+ *
+ * @param $taxonomy
+ * @param $terms
+ */
+function create_taxonomy_terms( $taxonomy, $terms ) {
+	foreach ( $terms as $term ) {
+		if ( get_term_id( $taxonomy, $term['slug'] ) === 0 ) {
+			echo "Create term ".$term['name']."\n";
+			echo create_term( $taxonomy, $term['name'], $term['slug'], $term['description'] );
+		}
+		else {
+			echo "Skipping term ".$term['name']."\n";
+		}
+	}
+}
+
+/**
  * Get menu id.
  *
  * @param $title
@@ -297,6 +340,22 @@ function get_page_id( $title ) {
 	return intval( shell_exec( "wp post list --post_type=page --title=\"$title\" --field=ID" ) );
 }
 
+/**
+ * Get term id.
+ *
+ * @param $taxonomy
+ * @param $term_slug
+ *
+ * @return integer term_id
+ */
+function get_term_id( $taxonomy, $term_slug ) {
+	$term = json_decode( shell_exec( "wp term get \"$taxonomy\" \"$term_slug\" --by=slug --format=json" ) );
+	if ( $term !== false && isset( $term->term_id ) ) {
+		return intval( $term->term_id );
+	}
+	return 0;
+}
+
 function is_item_assigned_to_menu( $item_title, $menu_id ) {
 	$menu_items = get_menu_items( $menu_id );
 
@@ -315,6 +374,10 @@ function create_page( $page ) {
 
 function create_menu( $title ) {
 	return shell_exec( "wp menu create \"$title\"" );
+}
+
+function create_term( $taxonomy, $term_name, $term_slug, $term_description ) {
+	return shell_exec( "wp term create \"$taxonomy\" \"$term_name\" --description=\"$term_description\" --slug=\"$term_slug\"" );
 }
 
 function add_page_to_menu( $menu_id, $page_id ) {
