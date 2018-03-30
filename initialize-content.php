@@ -157,7 +157,7 @@ $p4_page_type_terms = [
 	],
 	'1' => [
 		'name'        => 'Press release',
-		'slug'        => 'press-release',
+		'slug'        => 'press-release-cd',
 		'description' => 'A term for press release post type',
 	],
 	'2' => [
