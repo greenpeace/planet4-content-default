@@ -109,22 +109,22 @@ $menus = [
 			[
 				'name'    => 'Twitter',
 				'url'     => 'http://twitter.com',
-				'classes' => 'fa fa-twitter',
+				'classes' => 'fab fa-twitter',
 			],
 			[
 				'name'    => 'Facebook',
 				'url'     => 'http://facebook.com',
-				'classes' => 'fa fa-facebook-official',
+				'classes' => 'fab fa-facebook',
 			],
 			[
 				'name'    => 'Youtube',
 				'url'     => 'http://youtube.com',
-				'classes' => 'fa fa-youtube-play',
+				'classes' => 'fab fa-youtube',
 			],
 			[
 				'name'    => 'Instagram',
 				'url'     => 'http://instagram.com',
-				'classes' => 'fa fa-instagram',
+				'classes' => 'fab fa-instagram',
 			],
 		],
 	],
